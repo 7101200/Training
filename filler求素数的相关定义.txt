@@ -1,0 +1,32 @@
+# 无限的序列的操作
+
+# 可以先构造一个从3开始的奇数序列
+def odd():
+    n = 1
+    while True:
+        n = n + 2
+        yield n
+
+# 定义一个筛选函数非整除
+def notDivisible(n):
+    return lambda x: x % n > 0
+
+# 定义求素数的生成器，它将不断返回下一个素数
+# 当前生成器先返回第一个素数2，然后，利用filter()不断产生筛选后的新的序列。
+def primeNumber():
+    yield 2
+    # 初始序列
+    od = odd()
+    while True:
+        # 返回序列的第一个数
+        n = next(od)
+        yield n
+        # 构造新序列
+        od = filter(notDivisible(n), od)
+
+# 通过迭代进行控制输出的范围
+for x in primeNumber():
+    if x < 1000:
+        print(x)
+    else:
+        break

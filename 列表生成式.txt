@@ -1,0 +1,3 @@
+有一个list的元素为['Free','Man',12.7,'Case',15,None,'Age']，使用列表生成式。
+
+期待输出: ['FREE', 'MAN', 'CASE','AGE']
